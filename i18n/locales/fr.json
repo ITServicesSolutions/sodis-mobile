@@ -1,0 +1,286 @@
+{
+  "languageSettings": "Paramètre des Langues",
+  "save": "Enregistrer",
+  "français": "Français",
+  "anglais": "Anglais",
+  "login": {
+    "enter_mail": "Veuillez entrer votre email",
+    "invalid_mail": "Adresse email invalide",
+    "enter_password": "Veuillez entrer votre mot de passe",
+    "password_length": "Le mot de passe doit contenir au moins 6 caractères",
+    "login_text": "Connexion",
+    "adress_mail": "Adresse email",
+    "password": "Mot de passe",
+    "login": "Connexion...",
+    "login_": "Se connecter",
+    "forget_password": "Mot de passe oublié ?",
+    "to_register": "S'inscrire",
+    "welcome_sodis": "Bienvenue sur Sodis"
+  },
+  "register": {
+    "name_needed": "Le nom est requis",
+    "email_needed": "L’email est requis",
+    "phone_needed": "Le téléphone est requis",
+    "invalid_phone": "Numéro de téléphone invalide",
+    "sexe_needed": "Le sexe est requis",
+    "country_needed": "Le pays est requis",
+    "password_needed": "Le mot de passe est requis",
+    "password_length": "Le mot de passe doit contenir au moins 6 caractères",
+    "confirm_password_needed": "Veuillez confirmer le mot de passe",
+    "password_mismatch": "Les mots de passe ne correspondent pas",
+    "terms_needed": "Vous devez accepter les conditions",
+    "register": "Inscription",
+    "register_text": "Inscrivez-vous pour accéder à notre plateforme.",
+    "invalid_mail": "Email invalide",
+    "fields": {
+      "name": "Nom complet",
+      "email": "Adresse Email",
+      "phone": "Téléphone",
+      "enter_phone": "Entrez votre numéro",
+      "sexe": "Sexe",
+      "parrainage_code": "Code de parrainage (optionnel)",
+      "enter_code": "Entrez votre code",
+      "password": "Mot de passe",
+      "confirm_password": "Confirmer mot de passe",
+      "confirm_your_password": "Confirmez votre mot de passe",
+      "accept_terms": "En vous inscrivant, vous acceptez nos conditions.",
+      "register_": "Inscription...",
+      "register__": "S’inscrire",
+      "already_account": "Vous avez déjà un compte ?",
+      "country": "Pays"
+    }
+  },
+  "about": {
+    "aboutTitle": "À propos",
+    "aboutDescription": "Sodis est une plateforme améliorée de gestion de la distribution de produits en réseaux aux ménages et individus.",
+    "appVersion": "Version de l’application",
+    "contactEmail": "Email de contact"
+  },
+  "address": {
+    "title": "Adresse",
+    "defaultBadge": "Adresse par défaut",
+    "setDefault": "Définir comme adresse par défaut",
+    "delete": "Supprimer l'adresse",
+    "save": "Enregistrer",
+    "fields": {
+      "fullName": "Nom complet",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "city": "Ville",
+      "postalCode": "Code postal",
+      "setDefault": "Définir par défaut",
+      "country": "Pays"
+    },
+    "adresse_update_success": "Adresse modifiée avec succès",
+    "adresse_add_success": "Adresse ajoutée avec succès",
+    "confirm_delete": "Voulez-vous vraiment supprimer cette adresse ?",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "delete_": "Supprimer",
+    "loading": "Chargement...",
+    "default_address": "Adresse par défaut",
+    "make_default": "Définir par défaut",
+    "edit": "Modifier",
+    "edit_address": "Modifier une adresse",
+    "add_address": "Ajouter une nouvelle adresse",
+    "save_update": "Enregistrer les modifications",
+    "add_address_": "Ajouter l’adresse",
+    "delete_error": "Cette adresse est utilisée par une commande et ne peut pas être supprimée.",
+    "error": "Erreur"
+  },
+  "account": {
+    "accountTitle": "Mon compte",
+    "editProfile": "Modifier le profil",
+    "fields": {
+      "fullName": "Nom complet",
+      "email": "Adresse email",
+      "phone": "Numéro de téléphone",
+      "sexe": "Sexe",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
+    },
+    "tabs": {
+      "info": "Modifier les informations personnelles",
+      "password": "Modifier le mot de passe"
+    },
+    "password": {
+      "success": "Mot de passe mis à jour avec succès.",
+      "error": "Erreur lors du changement de mot de passe."
+    },
+    "updatePassword": "Mettre à jour le mot de passe",
+    "saving": "Enregistrement...",
+    "save": "Enregistrer"
+  },
+  "profil": {
+    "profil": "Profile",
+    "mynetwork": "Mon Réseaux",
+    "creditsodis": "Crédits Sodis",
+    "myaccount": "Mon Compte",
+    "myaddress": "Mon Adresse",
+    "moreinfo": "Plus d'informations",
+    "about": "À propos",
+    "terms": "Termes et Conditions",
+    "language": "Langue",
+    "logout": "Déconnexion"
+  },
+  "panier": {
+    "delete_from_cart": "Supprimer du Panier",
+    "enter_promocode": "Veuillez entrer un code promo.",
+    "promocode_applied": "Code promo appliqué avec succès !",
+    "promocode_notapplied": "Impossible d'appliquer ce code promo.",
+    "promocode": "Code promo",
+    "apply": "Appliquer",
+    "applied": "appliquée",
+    "subtotal": "Sous-total",
+    "reduction": "Réduction",
+    "taxes": "Taxes",
+    "total": "Total",
+    "buy": "Acheter",
+    "panier_empty": "Votre panier est vide.",
+    "cart": "Panier",
+    "select_payment": "Méthode de paiement",
+    "card_mobile_money": "Carte de crédit / Mobile Money",
+    "sodis_credit": "Crédits Sodis",
+    "enter_delivery_address": "Veuillez ajouter l'adresse de livraison",
+    "add_address": "Ajouter une adresse",
+    "insufficient_sodis": "Solde Sodis insuffisant pour effectuer vore paiement",
+    "no_address_found": "Aucune adresse de livraison trouvée.",
+    "order_create_succes": "Votre commande a été créée avec succès !",
+    "impossible_creation_order": "Impossible de créer la commande.",
+    "pay_not_validated": "Le paiement n’a pas pu être validé.",
+    "paiement_echoue": "Paiement échoué",
+    "order_commission_pay": "Commande payée via commission !",
+    "order_wallet_pay": "Commande payée via wallet !",
+    "not_enought_credit": "Vous n'avez pas assez de crédits Sodis.",
+    "solde_insuffi": "Solde insuffisant"
+  },
+  "creditsodis": {
+    "erreur_credit": "Erreur :",
+    "solde_credit": "Solde Crédit Sodis",
+    "credit_sodis": "Crédit Sodis",
+    "solde": "Solde",
+    "history_transaction": "Historique des Transactions",
+    "no_transaction": "Aucune transaction trouvée",
+    "no_credit": "Aucun crédit trouvé",
+    "total_commissions": "Total commissions"
+  },
+  "network": {
+    "no_network": "Aucun réseau trouvé",
+    "my_network": "Mon Réseau",
+    "legende": "Légende :",
+    "tdr": "TDR = Tête de réseau",
+    "gxpx": "Gx — Px = Génération et position"
+  },
+  "accueil": {
+    "header": {
+      "loading": "Chargement...",
+      "welcome": "Bienvenue",
+      "connect": "Se connecter",
+      "connexion_succes": "Connexion requise",
+      "connection_see": "Connectez-vous pour accéder à votre Liste de souhaits.",
+      "creditsodis": "Crédit Sodis",
+      "totalcommission": "Total Commissions",
+      "amount": "Solde",
+      "close": "Fermer"
+    },
+    "bestpackages": {
+      "bestpackage": "Meilleurs Packages",
+      "seemore": "Voir plus",
+      "error": "Erreur:",
+      "package_not_available": "Aucun package disponible pour le moment.",
+      "products": "Produits"
+    },
+    "bestproducts": {
+      "bestproduct": "Meilleurs produits",
+      "seemore": "Voir plus",
+      "error": "Erreur:",
+      "product_not_available": "Aucun produit disponible pour le moment."
+    },
+    "categoriespreview": {
+      "error": "Erreur:",
+      "categories": "Catégories",
+      "seeall": "Voir toutes"
+    }
+  },
+  "categories": {
+    "error": "Erreur",
+    "all_categories": "Toutes les catégories"
+  },
+  "forgetpassword": {
+    "forget_password": "Mot de passe oublié",
+    "enter_email": "Saisissez votre email pour recevoir un lien de réinitialisation.",
+    "email_enter": "Entrez votre email",
+    "sending": "Envoi en cours...",
+    "send_link": "Envoyer le lien"
+  },
+  "wishlist": {
+    "wishlist": "Liste de souhaits",
+    "wishlist_empty": "Votre liste de souhaits est vide.",
+    "add_all_to_cart": "Tout ajouter au panier"
+  },
+  "commandes": {
+    "order_number": "Commande #",
+    "delivery": "Livraison :",
+    "en_attente": "En attente",
+    "delivered": "Livrée",
+    "cancelled": "Annulée",
+    "no_orders": "Aucune commande dans cette catégorie.",
+    "orders": "Commandes",
+    "package": "Package"
+  },
+  "recherche": {
+    "search": "Rechercher..."
+  },
+  "invoice": {
+    "loading": "Chargement...",
+    "invoice": "Facture",
+    "sodis": "SODIS",
+    "invoice_number": "Numéro facture:",
+    "invoice_date": "Date:",
+    "sell_by": "Vendu par",
+    "adress": "36 rue Cadjehoun, Cotonou",
+    "client_adresse": "Adresse client",
+    "produit": "Produit",
+    "quantity": "Quantité",
+    "prix_unitaire": "Prix Unitaire",
+    "total": "Total",
+    "sous_total": "Sous-total:",
+    "reduction": "Réduction:",
+    "taxe": "Taxe:",
+    "le_totale": "Total:"
+  },
+  "packages": {
+    "all_packages": "Tous les Packages",
+    "error": "Erreur :",
+    "no_packages": "Aucun package trouvé.",
+    "search_package": "Rechercher un package..."
+  },
+  "packages_id": {
+    "products_involve": "Produits inclus :",
+    "wishlist_package_add": "Ce package a été ajouté à votre wishlist.",
+    "wishlist_package_add_eror": "Impossible d'ajouter à la wishlist.",
+    "cart_package_add": "Le package a été ajouté au panier.",
+    "cart_package_add_error": "Impossible d'ajouter au panier."
+  },
+  "products": {
+    "all_products": "Tous les produits",
+    "search_product": "Rechercher un produit...",
+    "error": "Erreur :",
+    "no_product": "Aucun produit trouvé."
+  },
+  "products_id": {
+    "loading_products": "Chargement du produit...",
+    "error_comming": "Une erreur est survenue :",
+    "product_not_found": "Produit introuvable.",
+    "wishlist_product_add": "Produit ajouté à votre wishlist avec succès.",
+    "wishlist_product_add_error": "Impossible d’ajouter à la wishlist.",
+    "cart_product_add": "Produit ajouté au panier avec succès.",
+    "cart_product_add_error": "Impossible d’ajouter au panier.",
+    "description": "Description",
+    "more_infos": "Informations supplémentaires",
+    "add": "Ajout...",
+    "wishlist": "Liste de souhaits",
+    "add_cart": "Ajouter au panier"
+  }
+}

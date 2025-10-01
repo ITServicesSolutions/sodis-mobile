@@ -1,0 +1,286 @@
+{
+  "languageSettings": "Language Settings",
+  "save": "Save",
+  "français": "French",
+  "anglais": "English",
+  "login": {
+    "enter_mail": "Please enter your email",
+    "invalid_mail": "Invalid email address",
+    "enter_password": "Please enter your password",
+    "password_length": "Password must be at least 6 characters",
+    "login_text": "Login",
+    "adress_mail": "Email address",
+    "password": "Password",
+    "login": "Logging in...",
+    "login_": "Sign in",
+    "forget_password": "Forgot password?",
+    "to_register": "Sign up",
+    "welcome_sodis": "Welcome to Sodis"
+  },
+  "register": {
+    "name_needed": "Name is required",
+    "email_needed": "Email is required",
+    "phone_needed": "Phone number is required",
+    "invalid_phone": "Invalid phone number",
+    "sexe_needed": "Gender is required",
+    "country_needed": "Country is required",
+    "password_needed": "Password is required",
+    "password_length": "Password must be at least 6 characters",
+    "confirm_password_needed": "Please confirm your password",
+    "password_mismatch": "Passwords do not match",
+    "terms_needed": "You must accept the terms",
+    "register": "Register",
+    "register_text": "Sign up to access our platform.",
+    "invalid_mail": "Invalid email",
+    "fields": {
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "enter_phone": "Enter your phone number",
+      "sexe": "Gender",
+      "parrainage_code": "Referral code (optional)",
+      "enter_code": "Enter your code",
+      "password": "Password",
+      "confirm_password": "Confirm password",
+      "confirm_your_password": "Confirm your password",
+      "accept_terms": "By signing up, you agree to our terms.",
+      "register_": "Registering...",
+      "register__": "Sign up",
+      "already_account": "Already have an account?",
+      "country": "Country"
+    }
+  },
+  "about": {
+    "aboutTitle": "About",
+    "aboutDescription": "Sodis is an advanced platform for managing the distribution of products in networks to households and individuals.",
+    "appVersion": "App Version",
+    "contactEmail": "Contact Email"
+  },
+  "address": {
+    "title": "Address",
+    "defaultBadge": "Default Address",
+    "setDefault": "Set as default address",
+    "delete": "Delete address",
+    "save": "Save",
+    "fields": {
+      "fullName": "Full name",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "postalCode": "Postal code",
+      "setDefault": "Set as default",
+      "country": "Country"
+    },
+    "adresse_update_success": "Address updated successfully",
+    "adresse_add_success": "Address added successfully",
+    "confirm_delete": "Are you sure you want to delete this address?",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete_": "Delete",
+    "loading": "Loading...",
+    "default_address": "Default address",
+    "make_default": "Set as default",
+    "edit": "Edit",
+    "edit_address": "Edit address",
+    "add_address": "Add a new address",
+    "save_update": "Save changes",
+    "add_address_": "Add address",
+    "delete_error": "This address is used by a command and cannot be deleted.",
+    "error": "Error"
+  },
+  "account": {
+    "accountTitle": "My Account",
+    "editProfile": "Edit Profile",
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "sexe": "Gender",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password"
+    },
+    "tabs": {
+      "info": "Personnals informations",
+      "password": "Change password"
+    },
+    "password": {
+      "success": "Password updated successfully.",
+      "error": "Error while changing the password."
+    },
+    "updatePassword": "Update password",
+    "saving": "Saving...",
+    "save": "Save"
+  },
+  "profil": {
+    "profil": "Profile",
+    "mynetwork": "My Network",
+    "creditsodis": "Crédits Sodis",
+    "myaccount": "My Account",
+    "myaddress": "My Address",
+    "moreinfo": "More Information",
+    "about": "About",
+    "terms": "Terms and Conditions",
+    "language": "Language",
+    "logout": "Logout"
+  },
+  "panier": {
+    "delete_from_cart": "Remove from Cart",
+    "enter_promocode": "Please enter a promo code.",
+    "promocode_applied": "Promo code applied successfully!",
+    "promocode_notapplied": "Unable to apply this promo code.",
+    "promocode": "Promo code",
+    "apply": "Apply",
+    "applied": "applied",
+    "subtotal": "Subtotal",
+    "reduction": "Discount",
+    "taxes": "Taxes",
+    "total": "Total",
+    "buy": "Buy",
+    "panier_empty": "Your cart is empty.",
+    "cart": "Cart",
+    "select_payment": "Payment Method",
+    "card_mobile_money": "Credit Card / Mobile Money",
+    "sodis_credit": "Sodis Credits",
+    "enter_delivery_address": "Please add a delivery address",
+    "add_address": "Add Address",
+    "insufficient_sodis": "Insufficient Sodis balance to make your payment",
+    "no_address_found": "No delivery address found.",
+    "order_create_succes": "Your order has been created successfully!",
+    "impossible_creation_order": "Unable to create the order.",
+    "pay_not_validated": "The payment could not be validated.",
+    "paiement_echoue": "Payment failed",
+    "order_commission_pay": "Order paid via commission!",
+    "order_wallet_pay": "Order paid via wallet!",
+    "not_enought_credit": "You do not have enough Sodis credits.",
+    "solde_insuffi": "Insufficient balance"
+  },
+  "creditsodis": {
+    "erreur_credit": "Error:",
+    "solde_credit": "Sodis Credit Balance",
+    "credit_sodis": "Crédit Sodis",
+    "solde": "Balance",
+    "history_transaction": "Transaction History",
+    "no_transaction": "No transactions found",
+    "no_credit": "No credit found",
+    "total_commissions": "Total commissions"
+  },
+  "network": {
+    "no_network": "No network found",
+    "my_network": "My Network",
+    "legende": "Legend :",
+    "tdr": "TDR = Head of network",
+    "gxpx": "Gx — Px = Génération and position"
+  },
+  "accueil": {
+    "header": {
+      "loading": "Loading...",
+      "welcome": "Welcome",
+      "connect": "Sign in",
+      "connexion_succes": "Login required",
+      "connection_see": "Sign in to access your Wishlist.",
+      "creditsodis": "Sodis Credit",
+      "totalcommission": "Total Commissions",
+      "amount": "Balance",
+      "close": "Close"
+    },
+    "bestpackages": {
+      "bestpackage": "Best Packages",
+      "seemore": "See more",
+      "error": "Error:",
+      "package_not_available": "No package available at the moment.",
+      "products": "Products"
+    },
+    "bestproducts": {
+      "bestproduct": "Best Products",
+      "seemore": "See more",
+      "error": "Error:",
+      "product_not_available": "No product available at the moment."
+    },
+    "categoriespreview": {
+      "error": "Error:",
+      "categories": "Categories",
+      "seeall": "See all"
+    }
+  },
+  "categories": {
+    "error": "Error",
+    "all_categories": "All categories"
+  },
+  "forgetpassword": {
+    "forget_password": "Forgot password",
+    "enter_email": "Enter your email to receive a reset link.",
+    "email_enter": "Enter your email",
+    "sending": "Sending...",
+    "send_link": "Send link"
+  },
+  "wishlist": {
+    "wishlist": "Wishlist",
+    "wishlist_empty": "Your wishlist is empty.",
+    "add_all_to_cart": "Add all to cart"
+  },
+  "commandes": {
+    "order_number": "Order #",
+    "delivery": "Delivery:",
+    "en_attente": "Pending",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "no_orders": "No orders in this category.",
+    "orders": "Orders",
+    "package": "Package"
+  },
+  "recherche": {
+    "search": "Search..."
+  },
+  "invoice": {
+    "loading": "Loading...",
+    "invoice": "Invoice",
+    "sodis": "SODIS",
+    "invoice_number": "Invoice Number:",
+    "invoice_date": "Date:",
+    "sell_by": "Sold by",
+    "adress": "36 rue Cadjehoun, Cotonou",
+    "client_adresse": "Customer Address",
+    "produit": "Product",
+    "quantity": "Quantity",
+    "prix_unitaire": "Unit Price",
+    "total": "Total",
+    "sous_total": "Subtotal:",
+    "reduction": "Discount:",
+    "taxe": "Tax:",
+    "le_totale": "Total:"
+  },
+  "packages": {
+    "all_packages": "All Packages",
+    "error": "Error :",
+    "no_packages": "No package found.",
+    "search_package": "Search for a package..."
+  },
+  "packages_id": {
+    "products_involve": "Products included:",
+    "wishlist_package_add": "This package has been added to your wishlist.",
+    "wishlist_package_add_eror": "Unable to add to wishlist.",
+    "cart_package_add": "The package has been added to the cart.",
+    "cart_package_add_error": "Unable to add to the cart."
+  },
+  "products": {
+    "all_products": "All Products",
+    "search_product": "Search for a product...",
+    "error": "Error :",
+    "no_product": "No product found."
+  },
+  "products_id": {
+    "loading_products": "Loading product...",
+    "error_comming": "An error occurred:",
+    "product_not_found": "Product not found.",
+    "wishlist_product_add": "Product successfully added to your wishlist.",
+    "wishlist_product_add_error": "Unable to add to wishlist.",
+    "cart_product_add": "Product successfully added to the cart.",
+    "cart_product_add_error": "Unable to add to the cart.",
+    "description": "Description",
+    "more_infos": "Additional information",
+    "add": "Adding...",
+    "wishlist": "Wishlist",
+    "add_cart": "Add to cart"
+  }
+}

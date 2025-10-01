@@ -3,6 +3,10 @@
 # dependencies
 node_modules/
 
+# folder
+.vscode/
+.cursor/
+
 # Expo
 .expo/
 dist/
@@ -41,3 +45,5 @@ app-example
 # generated native folders
 /ios
 /android
+
+.env
