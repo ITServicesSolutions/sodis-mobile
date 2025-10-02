@@ -4,14 +4,14 @@ import * as SplashScreen from "expo-splash-screen";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { getUser } from "@/store/authSlice";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from 'expo-router';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function SplashScreenCustom() {
   const opacity = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch<AppDispatch>();
-  const navigation = useNavigation();
+  const router = useRouter();
 
   useEffect(() => {
     // Animation du logo
@@ -30,10 +30,7 @@ export default function SplashScreenCustom() {
       } finally {
         // Quoi qu'il arrive, on redirige vers tabs
         await SplashScreen.hideAsync();
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'tabs' as never }],
-        })
+        router.push('/tabs')
         
       }
     };
