@@ -12,25 +12,38 @@ export default function SplashScreenCustom() {
   const opacity = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-
+ 
   useEffect(() => {
-    // Animation du logo
-    Animated.timing(opacity, {
-      toValue: 1,
-      duration: 1200,
-      useNativeDriver: true,
-    }).start();
+    const animate = () => {
+      return new Promise((resolve) => {
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 1200,
+          useNativeDriver: true,
+        }).start(() => resolve(true));
+      });
+    };
 
     const initApp = async () => {
       try {
-        // On essaye de récupérer l'utilisateur (optionnel)
-        await dispatch(getUser());
-      } catch (e) {
-        console.log("Erreur getUser:", e);
-      } finally {
-        // Quoi qu'il arrive, on redirige vers tabs
+        // Animation et tentative de récupération de l'utilisateur en parallèle
+        await Promise.all([
+          animate(),
+          dispatch(getUser()).catch((e) => {
+            console.log("Erreur getUser (non bloquante):", e);
+          })
+        ]);
+
+        // Petit délai pour assurer une transition fluide
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // Cacher le SplashScreen et rediriger vers tabs dans tous les cas
         await SplashScreen.hideAsync();
         console.log("Redirection vers /tabs");
+        router.replace('/tabs');
+      } catch (error) {
+        console.error("Erreur lors de l'initialisation:", error);
+        // Même en cas d'erreur, on redirige vers tabs
         router.replace('/tabs');
       }
     };
@@ -56,5 +69,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
-  logo: { width: 500, height: 500 },
+  logo: { 
+    width: 500, 
+    height: 500,
+    maxWidth: '90%',
+    maxHeight: '90%',
+  },
 });
