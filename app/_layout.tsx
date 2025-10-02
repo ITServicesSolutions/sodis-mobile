@@ -26,7 +26,6 @@ function RootNavigation() {
     <NavigationThemeProvider value={getNavigationTheme(theme)}>
       <Stack>
         <Stack.Screen name="SplashScreen" options={{ headerShown: false }} />
-        <Stack.Screen name="tabs" options={{ headerShown: false }} /> 
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         <Stack.Screen name="categories" options={{ title: 'Catégories', headerShown: false }} />
         <Stack.Screen name="products" options={{ title: 'Produits', headerShown: false }} />

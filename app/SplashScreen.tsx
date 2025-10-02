@@ -30,7 +30,7 @@ export default function SplashScreenCustom() {
       } finally {
         // Quoi qu'il arrive, on redirige vers tabs
         await SplashScreen.hideAsync();
-        router.push('/tabs')
+        router.replace('/tabs');
         
       }
     };
