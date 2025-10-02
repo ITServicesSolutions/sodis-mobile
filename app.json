@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "owner": "senado-09",
     "scheme": "sodis",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -63,7 +64,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "f12b18f1-2eeb-469f-9040-6f83d9b7ad2c"
+        "projectId": "b4ff2986-79c7-475f-bcb6-16f8d64ae09b"
       }
     }
   }

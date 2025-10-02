@@ -340,7 +340,7 @@ export default function AccountScreen() {
       {/* Tabs */}
       <TabView
         navigationState={{ index, routes }}
-        renderScene={renderScene}         // <- plus de SceneMap
+        renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
         style={{ zIndex: 0 }}

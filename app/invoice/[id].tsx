@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { StyleSheet, FlatList, Button, Alert } from "react-native";
 import {View, Text } from "@/components/Themed"
-import { useLocalSearchParams, router } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
 import { fetchOrderById, selectSelectedOrder } from "@/store/orderSlice";
@@ -10,11 +10,13 @@ import { useTranslation } from "react-i18next";
 import * as Print from "expo-print";
 import * as FileSystem from "expo-file-system/legacy";
 import * as MediaLibrary from "expo-media-library";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function InvoicePage() {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
+  const navigation = useNavigation();
   const order = useSelector(selectSelectedOrder);
   const { id } = useLocalSearchParams<{ id: string }>();
   const activeCurrency = useSelector((state: RootState) => state.currency.activeCurrency);
@@ -172,7 +174,10 @@ export default function InvoicePage() {
 
           {/* Boutons */}
           <View style={[styles.buttons,  {backgroundColor: "transparent"}]}>
-            <Button title="Continuer vos achats" onPress={() => router.push("/(tabs)")} />
+            <Button title="Continuer vos achats" onPress={() => navigation.reset({
+              index: 0,
+              routes: [{ name: 'tabs' as never }],
+            })} />
             <Button title="Télécharger facture" onPress={() => handleDownloadInvoice(order, currencyCode)} />
           </View>
         </>

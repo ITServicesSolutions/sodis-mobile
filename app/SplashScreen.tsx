@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { View, Animated, StyleSheet } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import { useRouter } from "expo-router";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { getUser } from "@/store/authSlice";
+import { useNavigation } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function SplashScreenCustom() {
-  const router = useRouter();
   const opacity = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch<AppDispatch>();
+  const navigation = useNavigation();
 
   useEffect(() => {
     // Animation du logo
@@ -28,9 +28,13 @@ export default function SplashScreenCustom() {
       } catch (e) {
         console.log("Erreur getUser:", e);
       } finally {
-        // Quoi qu'il arrive, on redirige vers (tabs)
+        // Quoi qu'il arrive, on redirige vers tabs
         await SplashScreen.hideAsync();
-        router.replace("/(tabs)");
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'tabs' as never }],
+        })
+        
       }
     };
 

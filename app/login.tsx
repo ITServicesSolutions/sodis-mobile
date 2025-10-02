@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
 import { login } from "@/store/authSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useRouter } from 'expo-router';
 import { useTranslation } from "react-i18next";
 
 export default function LoginScreen() {
@@ -16,7 +15,6 @@ export default function LoginScreen() {
   const navigation = useNavigation();
   const textColor = useThemeColor({}, "text");
   const primaryColor = useThemeColor({}, "primary");
-  const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const { user, loading, error } = useSelector((state: RootState) => state.auth);
 
@@ -28,7 +26,7 @@ export default function LoginScreen() {
     if (user) {
       navigation.reset({
         index: 0,
-        routes: [{ name: "(tabs)" as never }],
+        routes: [{ name: "tabs" as never }],
       });
     }
   }, [user]);
@@ -96,7 +94,7 @@ const handleLogin = async () => {
       // Redirection vers la page principale
       navigation.reset({
         index: 0,
-        routes: [{ name: "(tabs)" as never }],
+        routes: [{ name: "tabs" as never }],
       });
     } else if (login.rejected.match(resultAction)) {
       // ⚠️ Login échoué : afficher message exact
@@ -116,7 +114,10 @@ const handleLogin = async () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.replace('/(tabs)')}>
+      <Pressable onPress={() => navigation.reset({
+          index: 0,
+          routes: [{ name: 'tabs' as never }], 
+        })}>
         <Image
           source={require("../assets/images/adaptive-icon.png")}
           style={styles.logo}
