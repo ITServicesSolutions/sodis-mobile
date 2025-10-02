@@ -11,8 +11,6 @@ import store from '@/store';
 import { initI18n } from '../i18n';
 import { KkiapayProvider } from '@kkiapay-org/react-native-sdk';
 import { ThemeProvider, useTheme, getNavigationTheme } from '@/theme/ThemeContext';
-import LogRocket from '@logrocket/react-native';
-import { setJSExceptionHandler } from 'react-native-exception-handler';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -84,22 +82,6 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, i18nReady]);
-
-  useEffect(() => {
-    try {
-      LogRocket.init('xeuzjm/sodis')
-      console.log("LogRocket initialisé ✅");
-    } catch (e) {
-      console.log("Erreur LogRocket:", e);
-    }
-  }, []);
-
-  useEffect(() => {
-    setJSExceptionHandler((error, isFatal) => {
-      LogRocket.captureException(error);
-      console.log("Erreur capturée:", error);
-    }, true);
-  }, []);
 
   if (!fontsLoaded || !i18nReady) return null;
 

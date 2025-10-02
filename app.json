@@ -52,8 +52,7 @@
           }
         }
       ],
-      "expo-build-properties",
-      "@logrocket/react-native"
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -64,7 +63,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "04c0a4f6-b0e8-4bc0-ab0f-4b481193bdd2"
+        "projectId": "fdf4990b-77a1-48ac-bb74-a39df70c28b2"
       }
     }
   }
