@@ -55,7 +55,9 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-build-properties",
+      "@logrocket/react-native"
     ],
     "experiments": {
       "typedRoutes": true,
