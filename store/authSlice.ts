@@ -151,7 +151,14 @@ const authSlice = createSlice({
     })
     .addCase(getUser.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload as string;
+
+      // 🚀 Si l’erreur est "Not authenticated", on déconnecte en silence
+      if (action.payload === "Not authenticated") {
+        state.user = null;
+        state.error = null; // on ignore l’erreur
+      } else {
+        state.error = action.payload as string; // autres erreurs
+      }
     })
 
     // --- REGISTER ---

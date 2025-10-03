@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 
 import Colors from '../../constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { RootState } from '@/store';
 
 function CartIconWithBadge({ color }: { color: string }) {
@@ -38,8 +37,6 @@ export default function TabLayout() {
     ...((FontAwesome.font as object) || {}),
   });
 
-  const clientOnlyHeaderShown = useClientOnlyValue(false, true);
-
   useEffect(() => {
     if (error) throw error;
   }, [error]);
@@ -54,7 +51,6 @@ export default function TabLayout() {
         <Tabs
           screenOptions={{
             tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-            headerShown: clientOnlyHeaderShown,
           }}
         >
           <Tabs.Screen

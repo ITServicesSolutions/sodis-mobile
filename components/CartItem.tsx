@@ -96,13 +96,13 @@ export default function CartItem({
 
         <View style={[styles.quantityControls,  {backgroundColor: "transparent"}]}>
           <Pressable onPress={onDecrease} style={styles.qtyButton}>
-            <Ionicons name="remove" size={18} color={text} />
+            <Ionicons name="remove" size={18} color='#000000' />
           </Pressable>
 
           <Text style={[styles.qtyText, {color: text}]}>{product.quantity}</Text>
 
           <Pressable onPress={onIncrease} style={styles.qtyButton}>
-            <Ionicons name="add" size={18} color={text} />
+            <Ionicons name="add" size={18} color='#000000' />
           </Pressable>
         </View>
       </View>
