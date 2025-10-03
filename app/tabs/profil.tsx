@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, Image, Pressable } from 'react-native';
+import { StyleSheet, ScrollView, Image, Pressable, ActivityIndicator } from 'react-native';
 import { View, BoldText, RegularText, SemiBoldText, useThemeColor } from '@/components/Themed';
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect } from 'react';
@@ -34,14 +34,20 @@ export default function ProfileScreen() {
   }, [loading, user, router]);
 
   // Charger l'utilisateur une seule fois au montage
-  useEffect(() => {
-    if (user) {
-      dispatch(getUser());
-    }
-  }, [dispatch]);
+  // Charger l'utilisateur une seule fois si non chargé
+useEffect(() => {
+  if (!user && !loading) {
+    dispatch(getUser());
+  }
+}, [dispatch, user, loading]);
 
-  if (!user) {
-    return null; // on attend la redirection
+
+  if (loading || !user) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={textColor} />
+      </View>
+    );
   }
 
   return (

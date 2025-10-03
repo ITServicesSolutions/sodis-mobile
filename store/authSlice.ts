@@ -155,7 +155,7 @@ const authSlice = createSlice({
       // 🚀 Si l’erreur est "Not authenticated", on déconnecte en silence
       if (action.payload === "Not authenticated") {
         state.user = null;
-        state.error = null; // on ignore l’erreur
+        state.error = null;
       } else {
         state.error = action.payload as string; // autres erreurs
       }
