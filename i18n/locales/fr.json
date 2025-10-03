@@ -282,5 +282,9 @@
     "add": "Ajout...",
     "wishlist": "Liste de souhaits",
     "add_cart": "Ajouter au panier"
+  },
+  "not_found": {
+    "page_not_exist": "Cette page n'est pas disponible !",
+    "go_home": "Retour à l'accueil !"
   }
 }

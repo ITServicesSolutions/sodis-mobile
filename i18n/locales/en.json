@@ -282,5 +282,9 @@
     "add": "Adding...",
     "wishlist": "Wishlist",
     "add_cart": "Add to cart"
+  },
+  "not_found": {
+    "page_not_exist": "This screen doesn’t exist !",
+    "go_home": "Go to home screen ! "
   }
 }
