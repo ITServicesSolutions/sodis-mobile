@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { Tabs } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View, Text, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
+import { useRouter, Tabs } from 'expo-router';
 
 import Colors from '../../constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -37,63 +37,94 @@ export default function TabLayout() {
     ...((FontAwesome.font as object) || {}),
   });
 
+  const user = useSelector((state: RootState) => state.auth.user);
+  const router = useRouter();
+
   useEffect(() => {
     if (error) throw error;
   }, [error]);
 
+  if (!loaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  // fonction helper pour bloquer l'accès si non connecté
+  const requireAuth = (callback?: () => void) => {
+    if (!user) {
+      router.push('/login');
+      return false;
+    }
+    if (callback) callback();
+    return true;
+  };
+
   return (
-    <>
-      {!loaded ? (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" />
-        </View>
-      ) : (
-        <Tabs
-          screenOptions={{
-            tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-          }}
-        >
-          <Tabs.Screen
-            name="index"
-            options={{
-              title: 'Accueil',
-              headerShown: false,
-              tabBarIcon: ({ color }) => (
-                <FontAwesome5 name="home" size={24} color={color} />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="panier"
-            options={{
-              title: 'Panier',
-              headerShown: false,
-              tabBarIcon: ({ color }) => <CartIconWithBadge color={color} />,
-            }}
-          />
-          <Tabs.Screen
-            name="commandes"
-            options={{
-              title: 'Commandes',
-              headerShown: false,
-              tabBarIcon: ({ color }) => (
-                <FontAwesome5 name="clipboard-list" size={24} color={color} />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="profil"
-            options={{
-              title: 'Profil',
-              headerShown: false,
-              tabBarIcon: ({ color }) => (
-                <FontAwesome5 name="user" size={24} color={color} />
-              ),
-            }}
-          />
-        </Tabs>
-      )}
-    </>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Accueil',
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="home" size={24} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="panier"
+        options={{
+          title: 'Panier',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <CartIconWithBadge color={color} />,
+        }}
+        listeners={{
+          tabPress: (e) => {
+            if (!requireAuth()) e.preventDefault();
+          },
+        }}
+      />
+
+      <Tabs.Screen
+        name="commandes"
+        options={{
+          title: 'Commandes',
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="clipboard-list" size={24} color={color} />
+          ),
+        }}
+        listeners={{
+          tabPress: (e) => {
+            if (!requireAuth()) e.preventDefault();
+          },
+        }}
+      />
+
+      <Tabs.Screen
+        name="profil"
+        options={{
+          title: 'Profil',
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="user" size={24} color={color} />
+          ),
+        }}
+        listeners={{
+          tabPress: (e) => {
+            if (!requireAuth()) e.preventDefault();
+          },
+        }}
+      />
+    </Tabs>
   );
 }
 
