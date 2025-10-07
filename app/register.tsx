@@ -1,4 +1,12 @@
-import { StyleSheet, Image, Pressable, Alert, ScrollView, ActivityIndicator } from 'react-native';
+import { 
+  StyleSheet, 
+  Image, 
+  Pressable, 
+  Alert, 
+  ScrollView, 
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform, } from 'react-native';
 import { BoldText, RegularText, useThemeColor, View } from '@/components/Themed';
 import AppButton from '@/components/ui/AppButton';
 import { useNavigation } from '@react-navigation/native';
@@ -9,8 +17,9 @@ import Checkbox from '@/components/ui/Checkbox';
 import Select from '@/components/ui/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/store';
-import { register } from '@/store/authSlice';
+import { register, clearMessages } from '@/store/authSlice';
 import { useTranslation } from "react-i18next";
+import { useRouter } from 'expo-router';
 
   const countries = [
   "Afghanistan", "Afrique du Sud", "Albanie", "Algérie", "Allemagne", "Andorre", "Angola",
@@ -34,12 +43,13 @@ import { useTranslation } from "react-i18next";
 
 export default function RegisterScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const navigation = useNavigation();
   const textColor = useThemeColor({}, 'text');
   const primaryColor = useThemeColor({}, 'primary');
 
   const dispatch = useDispatch<AppDispatch>();
-  const { user, loading, error } = useSelector((state: RootState) => state.auth);
+  const { user, loading, error, successMessage  } = useSelector((state: RootState) => state.auth);
 
   type RegisterForm = {
     name: string;
@@ -140,13 +150,14 @@ export default function RegisterScreen() {
 
   // ✅ Navigation après inscription réussie
   useEffect(() => {
-    if (user) {
+    if (successMessage === "Inscription réussie.") {
       navigation.reset({
         index: 0,
         routes: [{ name: 'login' as never }],
       });
+      dispatch(clearMessages());
     }
-  }, [user]);
+  }, [successMessage]);
 
   // ✅ Affichage erreur API
   useEffect(() => {
@@ -156,13 +167,24 @@ export default function RegisterScreen() {
   }, [error]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+      <View style={styles.container}>
       <BackButton />
-      <Image
-        source={require('../assets/images/adaptive-icon.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <Pressable onPress={() => router.push('/tabs')}>
+        <Image
+          source={require('../assets/images/adaptive-icon.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </Pressable>
 
       <BoldText style={[styles.title, { color: textColor }]}>
         {t("register.register")}
@@ -202,7 +224,7 @@ export default function RegisterScreen() {
         label={t("register.fields.sexe")} 
         value={form.sexe}
         onSelect={(v) => handleChange('sexe', v)} 
-        options={['Masculin', 'Feminin']} 
+        options={['M', 'F']} 
         error={errors.sexe} 
       />
 
@@ -263,16 +285,30 @@ export default function RegisterScreen() {
           </RegularText>
         </Pressable>
       </View>
-    </ScrollView>
+      </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, alignItems: 'center', justifyContent: 'center' },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 60,
+  },
+  container: {
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   logo: { width: 120, height: 120, marginBottom: 30 },
   title: { fontSize: 26, fontWeight: 'bold', marginBottom: 5 },
   subtitle: { fontSize: 16, marginBottom: 20, textAlign: 'center' },
-  button: { width: '100%', marginBottom: 15 },
-  loginContainer: { flexDirection: 'row', marginTop: 10 },
-  loginText: { fontWeight: 'bold' },
+  button: { width: '100%', marginTop: 10, marginBottom: 20 },
+  loginContainer: {
+    marginTop: 'auto',
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  loginText: { fontWeight: 'bold', textAlign: 'center' },
 });
