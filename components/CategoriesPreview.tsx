@@ -17,7 +17,7 @@ export default function CategoriesPreview() {
   const backgroundPersonalise = useThemeColor({}, 'background_personalise');
 
   const router = useRouter();
-  const MAX_CATEGORIES = 6;
+  const MAX_CATEGORIES = 8;
   const screenWidth = Dimensions.get('window').width;
 
 
@@ -51,11 +51,6 @@ export default function CategoriesPreview() {
         <SemiBoldText style={styles.title}>
           {t("accueil.categoriespreview.categories")}
         </SemiBoldText>
-        <Pressable onPress={() => router.push('/categories')}>
-          <RegularText style={[styles.viewAll, { color: linkColor }]}>
-            {t("accueil.categoriespreview.seeall")}
-          </RegularText>
-        </Pressable>
       </View>
 
       {/* Scroll horizontal */}

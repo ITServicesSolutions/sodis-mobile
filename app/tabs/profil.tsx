@@ -130,16 +130,6 @@ export default function ProfileScreen() {
         </Pressable>
 
         <Pressable
-          style={[styles.row, { borderColor: borderColor }]}
-        >
-          <Ionicons name="document-text-outline" size={20} color={textColor} />
-          <RegularText style={[styles.rowText, {color: textColor}]}>
-            {t('profil.terms')}
-          </RegularText>
-          <Ionicons name="chevron-forward" size={20} color={textColor} />
-        </Pressable>
-
-        <Pressable
           onPress={() => router.push('/profile/language')}
           style={[styles.row, { borderColor: borderColor }]}
         >
