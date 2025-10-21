@@ -24,27 +24,26 @@ function RootNavigation() {
 
   return (
     <NavigationThemeProvider value={getNavigationTheme(theme)}>
-      <Stack>
-        <Stack.Screen name="SplashScreen" options={{ headerShown: false }} />
-        <Stack.Screen name="tabs" options={{ headerShown: false }} /> 
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SplashScreen" />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="categories" options={{ title: 'Catégories', headerShown: false }} />
-        <Stack.Screen name="products" options={{ title: 'Produits', headerShown: false }} />
-        <Stack.Screen name="product/[id]" options={{ title: 'Détails du produit', headerShown: false }} />
-        <Stack.Screen name="packages" options={{ title: 'Tous les Packages', headerShown: false }} />
-        <Stack.Screen name="package/[id]" options={{ title: 'Détails du Package', headerShown: false }} />
-        <Stack.Screen name="profile/account" options={{ title: 'Mon Compte', headerShown: false }} />
-        <Stack.Screen name="profile/address" options={{ title: 'Mon Adresse', headerShown: false }} />
-        <Stack.Screen name="profile/about" options={{ title: 'À propos de nous', headerShown: false }} />
-        <Stack.Screen name="profile/terms" options={{ title: "Conditions d'utilisation", headerShown: false }} />
-        <Stack.Screen name="profile/language" options={{ title: 'Langue', headerShown: false }} />
-        <Stack.Screen name="profile/network" options={{ title: 'Mon Réseaux', headerShown: false }} />
-        <Stack.Screen name="profile/creditsodis" options={{ title: 'Crédits Sodis', headerShown: false }} />
-        <Stack.Screen name="login" options={{ title: 'Connexion', headerShown: false }} />
-        <Stack.Screen name="register" options={{ title: 'Inscription', headerShown: false }} />
-        <Stack.Screen name="forgetPassword" options={{ title: 'Mot de passe oublié', headerShown: false }} />
-        <Stack.Screen name="wishlist" options={{ title: 'Liste de souhaits', headerShown: false }} />
-        <Stack.Screen name="invoice/[id]" options={{ title: 'Facture', headerShown: false }} />
+        <Stack.Screen name="categories" />
+        <Stack.Screen name="products" />
+        <Stack.Screen name="product/[id]" />
+        <Stack.Screen name="packages" />
+        <Stack.Screen name="package/[id]" />
+        <Stack.Screen name="profile/account" />
+        <Stack.Screen name="profile/address" />
+        <Stack.Screen name="profile/about" />
+        <Stack.Screen name="profile/terms" />
+        <Stack.Screen name="profile/language" />
+        <Stack.Screen name="profile/network" />
+        <Stack.Screen name="profile/creditsodis" />
+        <Stack.Screen name="login" />
+        <Stack.Screen name="register" />
+        <Stack.Screen name="forgetPassword" />
+        <Stack.Screen name="wishlist" />
+        <Stack.Screen name="invoice/[id]" />
       </Stack>
     </NavigationThemeProvider>
   );

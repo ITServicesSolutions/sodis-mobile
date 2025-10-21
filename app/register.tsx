@@ -1,4 +1,12 @@
-import { StyleSheet, Image, Pressable, Alert, ScrollView, ActivityIndicator } from 'react-native';
+import { 
+  StyleSheet, 
+  Image, 
+  Pressable, 
+  Alert, 
+  ScrollView, 
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform, } from 'react-native';
 import { BoldText, RegularText, useThemeColor, View } from '@/components/Themed';
 import AppButton from '@/components/ui/AppButton';
 import { useNavigation } from '@react-navigation/native';
@@ -9,37 +17,21 @@ import Checkbox from '@/components/ui/Checkbox';
 import Select from '@/components/ui/Select';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/store';
-import { register } from '@/store/authSlice';
+import { register, clearMessages } from '@/store/authSlice';
 import { useTranslation } from "react-i18next";
+import { useRouter } from 'expo-router';
+import CountryPicker, { Country } from "react-native-country-picker-modal";
 
-  const countries = [
-  "Afghanistan", "Afrique du Sud", "Albanie", "Algérie", "Allemagne", "Andorre", "Angola",
-  "Arabie Saoudite", "Argentine", "Arménie", "Australie", "Autriche", "Belgique", "Bénin",
-  "Bolivie", "Botswana", "Brésil", "Bulgarie", "Burkina Faso", "Burundi", "Cameroun",
-  "Canada", "Chili", "Chine", "Chypre", "Colombie", "Congo", "Corée du Sud", "Costa Rica",
-  "Côte d'Ivoire", "Croatie", "Danemark", "Djibouti", "Égypte", "Émirats Arabes Unis", 
-  "Espagne", "Estonie", "États-Unis", "Éthiopie", "Finlande", "France", "Gabon", "Gambie",
-  "Ghana", "Grèce", "Guinée", "Haïti", "Hongrie", "Inde", "Indonésie", "Irak", "Iran",
-  "Irlande", "Islande", "Italie", "Japon", "Jordanie", "Kenya", "Koweït", "Laos", "Lettonie",
-  "Liban", "Libéria", "Libye", "Lituanie", "Luxembourg", "Madagascar", "Malaisie", "Mali",
-  "Malte", "Maroc", "Mauritanie", "Mexique", "Monaco", "Mongolie", "Mozambique", "Namibie",
-  "Népal", "Niger", "Nigeria", "Norvège", "Nouvelle-Zélande", "Ouganda", "Ouzbékistan",
-  "Pakistan", "Palestine", "Panama", "Papouasie-Nouvelle-Guinée", "Paraguay", "Pays-Bas",
-  "Pérou", "Philippines", "Pologne", "Portugal", "Qatar", "République Centrafricaine",
-  "République Tchèque", "Roumanie", "Royaume-Uni", "Russie", "Rwanda", "Sénégal", "Serbie",
-  "Seychelles", "Singapour", "Slovaquie", "Slovénie", "Somalie", "Soudan", "Sri Lanka",
-  "Suède", "Suisse", "Syrie", "Tanzanie", "Tchad", "Thaïlande", "Togo", "Tunisie", "Turquie",
-  "Ukraine", "Uruguay", "Venezuela", "Vietnam", "Yémen", "Zambie", "Zimbabwe"
-];
 
 export default function RegisterScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const navigation = useNavigation();
   const textColor = useThemeColor({}, 'text');
   const primaryColor = useThemeColor({}, 'primary');
 
   const dispatch = useDispatch<AppDispatch>();
-  const { user, loading, error } = useSelector((state: RootState) => state.auth);
+  const { user, loading, error, successMessage  } = useSelector((state: RootState) => state.auth);
 
   type RegisterForm = {
     name: string;
@@ -140,13 +132,14 @@ export default function RegisterScreen() {
 
   // ✅ Navigation après inscription réussie
   useEffect(() => {
-    if (user) {
+    if (successMessage === "Inscription réussie.") {
       navigation.reset({
         index: 0,
         routes: [{ name: 'login' as never }],
       });
+      dispatch(clearMessages());
     }
-  }, [user]);
+  }, [successMessage]);
 
   // ✅ Affichage erreur API
   useEffect(() => {
@@ -156,13 +149,24 @@ export default function RegisterScreen() {
   }, [error]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+      <View style={styles.container}>
       <BackButton />
-      <Image
-        source={require('../assets/images/adaptive-icon.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <Pressable onPress={() => router.push('/tabs')}>
+        <Image
+          source={require('../assets/images/adaptive-icon.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </Pressable>
 
       <BoldText style={[styles.title, { color: textColor }]}>
         {t("register.register")}
@@ -202,17 +206,52 @@ export default function RegisterScreen() {
         label={t("register.fields.sexe")} 
         value={form.sexe}
         onSelect={(v) => handleChange('sexe', v)} 
-        options={['Masculin', 'Feminin']} 
+        options={['M', 'F']} 
         error={errors.sexe} 
       />
 
-      <Select 
-        label={t("register.fields.country")}
-        value={form.country}
-        onSelect={(v) => handleChange('country', v)} 
-        options={countries} 
-        error={errors.country} 
-      />
+      <View style={{ width: "100%", marginBottom: 16 }}>
+        <BoldText style={{ marginBottom: 5, color: textColor }}>
+          {t("register.fields.country")}
+        </BoldText>
+
+        <View
+          style={{
+            borderColor: errors.country ? "red" : "#ccc",
+            borderWidth: 1,
+            borderRadius: 10,
+            paddingVertical: 8,
+            paddingHorizontal: 12,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <CountryPicker
+            withFlag
+            withFilter
+            withCountryNameButton
+            withCallingCodeButton={false}
+            withAlphaFilter
+            onSelect={(country: Country) =>
+              handleChange("country", typeof country.name === "string" ? country.name : country.cca2)
+            }
+            countryCode="BJ"
+            containerButtonStyle={{ flex: 1 }}
+            theme={{
+              fontSize: 16,
+              fontFamily: "System",
+              primaryColor: primaryColor,
+            }}
+          />
+        </View>
+
+        {errors.country && (
+          <RegularText style={{ color: "red", fontSize: 13, marginTop: 4 }}>
+            {errors.country}
+          </RegularText>
+        )}
+      </View>
 
       <TextField 
         label={t("register.fields.parrainage_code")}
@@ -263,16 +302,30 @@ export default function RegisterScreen() {
           </RegularText>
         </Pressable>
       </View>
-    </ScrollView>
+      </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, alignItems: 'center', justifyContent: 'center' },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 60,
+  },
+  container: {
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   logo: { width: 120, height: 120, marginBottom: 30 },
   title: { fontSize: 26, fontWeight: 'bold', marginBottom: 5 },
   subtitle: { fontSize: 16, marginBottom: 20, textAlign: 'center' },
-  button: { width: '100%', marginBottom: 15 },
-  loginContainer: { flexDirection: 'row', marginTop: 10 },
-  loginText: { fontWeight: 'bold' },
+  button: { width: '100%', marginTop: 10, marginBottom: 20 },
+  loginContainer: {
+    marginTop: 'auto',
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  loginText: { fontWeight: 'bold', textAlign: 'center' },
 });

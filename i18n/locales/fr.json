@@ -47,6 +47,7 @@
       "register_": "Inscription...",
       "register__": "S’inscrire",
       "already_account": "Vous avez déjà un compte ?",
+      "search_country": "Rechercher un pays...",
       "country": "Pays"
     }
   },
@@ -282,5 +283,9 @@
     "add": "Ajout...",
     "wishlist": "Liste de souhaits",
     "add_cart": "Ajouter au panier"
+  },
+  "not_found": {
+    "page_not_exist": "Cette page n'est pas disponible !",
+    "go_home": "Retour à l'accueil !"
   }
 }

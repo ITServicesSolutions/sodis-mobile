@@ -489,10 +489,19 @@ export default function CartScreen() {
     </>
   );
 
+  // Protection : si pas encore déterminé → afficher loader
+  if (!user && !userLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={primaryColor} />
+      </View>
+    );
+  }
+
   // Content
   let content: React.ReactNode = null;
 
-  if (!user || userLoading) {
+  if (userLoading) {
     content = (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color={primaryColor} />
@@ -545,7 +554,7 @@ export default function CartScreen() {
               onDelete={() => removeItem(item.id)}
             />
           )}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => String(item.id)}
           contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 16 }}
           ListFooterComponent={renderFooter}
           showsVerticalScrollIndicator={false}

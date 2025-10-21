@@ -9,10 +9,12 @@ import { AppDispatch, RootState } from "@/store";
 import { login } from "@/store/authSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useTranslation } from "react-i18next";
+import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
   const navigation = useNavigation();
+  const router = useRouter();
   const textColor = useThemeColor({}, "text");
   const primaryColor = useThemeColor({}, "primary");
   const dispatch = useDispatch<AppDispatch>();
@@ -24,10 +26,7 @@ export default function LoginScreen() {
   // 1️⃣ Redirection si déjà connecté
   useEffect(() => {
     if (user) {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "tabs" as never }],
-      });
+      router.push('/tabs')
     }
   }, [user]);
 
@@ -92,10 +91,7 @@ const handleLogin = async () => {
       }
 
       // Redirection vers la page principale
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "tabs" as never }],
-      });
+      router.push('/tabs')
     } else if (login.rejected.match(resultAction)) {
       // ⚠️ Login échoué : afficher message exact
       Alert.alert(
@@ -114,10 +110,7 @@ const handleLogin = async () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.reset({
-          index: 0,
-          routes: [{ name: 'tabs' as never }], 
-        })}>
+      <Pressable onPress={() => router.push('/tabs')}>
         <Image
           source={require("../assets/images/adaptive-icon.png")}
           style={styles.logo}

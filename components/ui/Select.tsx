@@ -15,20 +15,39 @@ interface SelectProps {
   error?: string;
 }
 
-export default function Select({ options, value, placeholder = 'Choisir...', onSelect, clearable = true }: SelectProps) {
+export default function Select({
+  label,
+  options,
+  value,
+  placeholder = 'Choisir...',
+  onSelect,
+  clearable = true,
+  error,
+}: SelectProps) {
   const [visible, setVisible] = useState(false);
   const [search, setSearch] = useState('');
+
   const textColor = useThemeColor({}, 'text');
   const primaryColor = useThemeColor({}, 'primary');
   const borderColor = useThemeColor({}, 'border');
-  const bgColor = useThemeColor({}, "white");
+  const bgColor = useThemeColor({}, 'background');
 
   const filtered = options.filter(o => o.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <View>
+    <View style={{ marginBottom: 16, width: '100%' }}>
+      {/* ✅ Label au-dessus */}
+      {label && <Text style={[styles.label, { color: textColor }]}>{label}</Text>}
+
+      {/* ✅ Sélecteur principal */}
       <Pressable
-        style={[styles.selectBox, { borderColor: borderColor }]}
+        style={[
+          styles.selectBox,
+          {
+            borderColor: error ? 'red' : borderColor,
+            backgroundColor: bgColor,
+          },
+        ]}
         onPress={() => setVisible(true)}
         accessibilityRole="button"
       >
@@ -45,16 +64,23 @@ export default function Select({ options, value, placeholder = 'Choisir...', onS
         </View>
       </Pressable>
 
+      {/* ✅ Message d’erreur */}
+      {error && <Text style={styles.error}>{error}</Text>}
+
+      {/* ✅ Modal de sélection */}
       <Modal visible={visible} animationType="slide" transparent>
-        <View style={[styles.overlay, { backgroundColor: bgColor }]}>
+        <View style={[styles.overlay]}>
           <View style={[styles.modal, { backgroundColor: bgColor }]}>
             <View style={styles.header}>
               <TextInput
                 placeholder="Rechercher..."
-                placeholderTextColor={textColor}
+                placeholderTextColor="#aaa"
                 value={search}
                 onChangeText={setSearch}
-                style={[styles.search, { borderColor: borderColor, color: textColor }]}
+                style={[
+                  styles.search,
+                  { borderColor: borderColor, color: textColor },
+                ]}
               />
               <Pressable onPress={() => setVisible(false)}>
                 <Ionicons name="close" size={24} color={primaryColor} />
@@ -84,17 +110,50 @@ export default function Select({ options, value, placeholder = 'Choisir...', onS
 }
 
 const styles = StyleSheet.create({
+  label: {
+    marginBottom: 6,
+    fontSize: 14,
+    fontWeight: '500',
+  },
   selectBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 12,
     borderWidth: 1,
-    borderRadius: 6,
-    alignItems: 'center'
+    borderRadius: 8,
+    alignItems: 'center',
   },
-  overlay: { flex: 1, justifyContent: 'flex-end' },
-  modal: { maxHeight: '70%', borderTopLeftRadius: 12, borderTopRightRadius: 12, padding: 16 },
-  header: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  search: { flex: 1, borderWidth: 1, borderRadius: 6, padding: 8, marginRight: 8 },
-  option: { paddingVertical: 12, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: '#ccc' }
+  overlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  modal: {
+    maxHeight: '70%',
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    padding: 16,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  search: {
+    flex: 1,
+    borderWidth: 1,
+    borderRadius: 6,
+    padding: 8,
+    marginRight: 8,
+  },
+  option: {
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#ccc',
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 4,
+  },
 });

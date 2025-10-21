@@ -27,7 +27,7 @@ export default function OrdersScreen() {
     { key: 'cancelled', title: t("commandes.cancelled") },
   ], [t]);
 
-  // Charger les commandes à l'arrivée de l'utilisateur
+  // Charger les commandes si connecté
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchOrders({ page: 1, perPage: 20 }));
@@ -44,6 +44,24 @@ export default function OrdersScreen() {
   const pendingOrders = useMemo(() => orders.filter(o => o.status === 'pending'), [orders]);
   const deliveredOrders = useMemo(() => orders.filter(o => o.status === 'delivered'), [orders]);
   const cancelledOrders = useMemo(() => orders.filter(o => o.status === 'cancelled'), [orders]);
+
+  // Attente pendant le chargement de l’état utilisateur
+  if (userLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={primaryColor} />
+      </View>
+    );
+  }
+
+  // Si pas connecté → on ne rend rien, le useEffect fait la redirection
+  if (!user) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color={textColor} />
+      </View>
+    );
+  }
 
   const renderTab = (orderList: Order[]) => (
     <ScrollView contentContainerStyle={styles.scroll}>
@@ -67,17 +85,9 @@ export default function OrdersScreen() {
     cancelled: () => renderTab(cancelledOrders),
   });
 
-  if (!user || userLoading) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" color={primaryColor} />
-      </View>
-    );
-  }
-
   return (
     <View style={{ flex: 1 }}>
-      <BoldText style={[styles.title, {color: textColor}]}>
+      <BoldText style={[styles.title, { color: textColor }]}>
         {t("commandes.orders")}
       </BoldText>
       <TabView
